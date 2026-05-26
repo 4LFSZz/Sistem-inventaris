@@ -1,14 +1,18 @@
 <?php
 require 'C:\xampp\htdocs\Sistem invertaris\Config\Database.php';
 $db = new Database();
+session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $nama_barang = $_POST['nama_barang'];
-    $kategori = $_POST['kategori'];
-    $stok = $_POST['stok'];
-    $harga = $_POST['harga'];
+    $nama_barang = htmlspecialchars($_POST['nama_barang']);
+    $kategori = htmlspecialchars($_POST['kategori']);
+    $stok = htmlspecialchars($_POST['stok']);
+    $harga = htmlspecialchars($_POST['harga']);
 
     $db->insertBarang($nama_barang, $kategori, $stok, $harga);
+    $_SESSION['pesan'] = 'Siswa berhasil ditambahkan';
+    $_SESSION['status'] = 'success';
+
     header("Location: index.php");
 }
 ?>
@@ -44,40 +48,49 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body>
 
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;" data-bs-theme="light">
+        <div class="container">
             <a class="navbar-brand" href="index.php">Home</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav ms-auto">
+                    <a class="nav-link" href="logout.php" onclick="return confirm('Logout?')">Logout</a>
+                </div>
+            </div>
         </div>
     </nav>
 
-<br>
+    <br>
 
-
-    <div class="container">
+<div class="containter-fluid">
         <div class="row">
-            <div class="col">
-                <div class="card">
+            <div class="col-5 m-auto">
+                <div class="card p-3">
+                    <div class="card-body">
                     <div class="card-body">
                         <h2>Tambah Barang</h2>
                         <form method="post">
-                            <label for="data">Nama Barang:</label>
-                            <input type="text" name="nama_barang" size="20">
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Nama Barang</label>
+                                <input type="text" class="form-control" id="nama" name="nama barang">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Kategori</label>
+                                <input type="text" class="form-control" id="kategori" name="kategori">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Stok</label>
+                                <input type="text" class="form-control" id="stok" name="stok">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlTextarea1" class="form-label">Harga</label>
+                                <input class="form-control" name="harga" id="harga">
+                            </div>
                             <br>
-                            <label for="data">Kategori:</label>
-                            <input type="text" name="kategori" size="20">
-                            <br>
-                            <label for="data">Stok:</label>
-                            <input type="text" name="stok" size="20">
-                            <br>
-                            <label for="data">Harga:</label>
-                            <input type="text" name="harga" size="20">
-
-                            <br> <br>
                             <a href="index.php" class="btn btn-secondary">Kembali</a>
-                            <button type="submit" class="btn btn-primary">Simpan</button>
+                            <button type="submit" class="btn btn-primary" style="background-color: rgb(93, 151, 192);">Simpan</button>
                         </form>
                     </div>
                 </div>
