@@ -79,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <form method="post">
                         <div class="mb-3">
                             <label for="exampleInputUser" class="form-label">Username</label>
-                            <input type="text" class="form-control" id="exampleInputUser" placeholder="Masukan Username Anda" name="username">
+                            <input type="text" class="form-control" id="exampleInputUser" placeholder="Masukan Username Anda" name="username" required>
                         </div>
                         <div class="mb-4">
                             <label for="exampleInputPassword1" class="form-label">Password</label>
