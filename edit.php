@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $db->updateBarang($id, $nama_barang, $kategori, $stok, $harga);
 
-    $_SESSION['pesan'] = 'Siswa berhasil diubah';
+    $_SESSION['pesan'] = 'Barang berhasil diubah';
     $_SESSION['status'] = 'success';
     header("Location: index.php");
 }
@@ -74,23 +74,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="col-5 m-auto">
                 <div class="card p-3">
                     <div class="card-body">
-                        <h2>Tambah Barang</h2>
+                        <h2>Edit Barang</h2>
                         <form method="post">
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Nama Barang</label>
-                                <input type="text" class="form-control" id="nama" name="nama barang">
+                                <input type="text" class="form-control" id="nama" name="nama_barang" value="<?= $row['nama_barang'] ?>">
                             </div>
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Kategori</label>
-                                <input type="text" class="form-control" id="kategori" name="kategori">
+                                <input type="text" class="form-control" id="kategori" name="kategori" value="<?= $row['kategori'] ?>">
                             </div>
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Stok</label>
-                                <input type="text" class="form-control" id="stok" name="stok">
+                                <input type="text" class="form-control" id="stok" name="stok" value="<?= $row['stok'] ?>">
                             </div>
                             <div class="mb-3">
                                 <label for="exampleFormControlTextarea1" class="form-label">Harga</label>
-                                <input class="form-control" name="harga" id="harga">
+                                <input class="form-control" name="harga" id="harga" value="<?= $row['harga'] ?>">
                             </div>
                             <br>
                             <a href="index.php" class="btn btn-secondary">Kembali</a>
