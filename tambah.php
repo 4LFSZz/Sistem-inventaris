@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $harga = htmlspecialchars($_POST['harga']);
 
     $db->insertBarang($nama_barang, $kategori, $stok, $harga);
-    $_SESSION['pesan'] = 'Siswa berhasil ditambahkan';
+    $_SESSION['pesan'] = 'Barang berhasil ditambahkan';
     $_SESSION['status'] = 'success';
 
     header("Location: index.php");
@@ -74,19 +74,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <form method="post">
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Nama Barang</label>
-                                <input type="text" class="form-control" id="nama" name="nama barang">
+                                <input type="text" class="form-control" id="nama" name="nama_barang" required>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Kategori</label>
-                                <input type="text" class="form-control" id="kategori" name="kategori">
+                                <input type="text" class="form-control" id="kategori" name="kategori" required>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Stok</label>
-                                <input type="text" class="form-control" id="stok" name="stok">
+                                <input type="text" class="form-control" id="stok" name="stok" required>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleFormControlTextarea1" class="form-label">Harga</label>
-                                <input class="form-control" name="harga" id="harga">
+                                <input class="form-control" name="harga" id="harga" required>
                             </div>
                             <br>
                             <a href="index.php" class="btn btn-secondary">Kembali</a>
